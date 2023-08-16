@@ -19,4 +19,12 @@ package-install:
 
 
 make lint:
-	poetry run flake8 brain_games
+	poetry run flake8 gendiff
+
+
+package-test:
+	poetry run pytest -vv
+
+
+test-coverage:
+	poetry run pytest --cov=gendiff --cov-report xml
