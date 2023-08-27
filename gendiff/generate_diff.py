@@ -1,23 +1,11 @@
-import json
 from gendiff.parser import parser
+from gendiff.formater.format import make_format
+from gendiff.generate_diff_tree import generate_diff_tree
 
 
-def generate_diff(file1_path, file2_path):
-    file1_dict = parser(file1_path)
-    file2_dict = parser(file2_path)
-    diff = dict()
-    sorted_list_key = sorted(
-        list(
-            set(file1_dict.keys()) | set(file2_dict.keys()
-                                         )))
-    for key in sorted_list_key:
-        if file1_dict.get(key) == file2_dict.get(key):
-            diff[key] = file1_dict[key]
-        elif file1_dict.get(key) and file2_dict.get(key):
-            diff[f'-{key}'] = file1_dict[key]
-            diff[f'+{key}'] = file2_dict[key]
-        elif file1_dict.get(key) is not None:
-            diff[f'-{key}'] = file1_dict[key]
-        elif file2_dict.get(key) is not None:
-            diff[f'+{key}'] = file2_dict[key]
-    return json.dumps(diff, indent=2)
+def generate_diff(file1_path, file2_path, format='stylish'):
+    file1 = parser(file1_path)
+    file2 = parser(file2_path)
+    diff = generate_diff_tree(file1, file2)
+    format_diff = make_format(diff, format)
+    return format_diff
