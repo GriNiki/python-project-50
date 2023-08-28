@@ -1,10 +1,14 @@
 [tool.poetry]
 name = "hexlet-code"
-version = "0.5.0"
-description = ""
+version = "1.0.0"
+description = "diff generation utility"
 authors = ["Nikita Grishin <mr_obey@mail.ru>"]
 readme = "README.md"
 packages = [{ include = "gendiff" }]
+classifiers = [
+"Topic :: Utilities",
+"Programming Language :: Python :: 3.10",
+    "Natural Language :: English"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
