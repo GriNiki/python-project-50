@@ -20,9 +20,9 @@ def stylish(items, depth=0):
                           f" {stylish(item['children'], depth+1)}")
 
         elif item['status'] == 'plain_changes':
-            result.append(make_line(item['name'], item['old_value'],
+            result.append(make_line(item['value'], item['old_value'],
                                     '-', depth))
-            result.append(make_line(item['name'], item['new_value'],
+            result.append(make_line(item['value'], item['new_value'],
                                     '+', depth))
 
     return '\n'.join(itertools.chain("{", result, [indent + "}"]))

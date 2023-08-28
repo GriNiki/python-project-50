@@ -34,7 +34,7 @@ def generate_diff_tree(dict1, dict2):
                                 })
         else:
             diff_tree.append({
-                    'name': key,
+                    'value': key,
                     'old_value': dict1[key],
                     'new_value': dict2[key],
                     'status': 'plain_changes'

@@ -13,8 +13,10 @@ def test_generate_diff():
 
     expected_result = open('testes/fixture/test_json_result.txt', 'r').read()
     expected_result_tree = open('testes/fixture/test_tree_result.txt', 'r').read()
+    expected_result_plain = open('testes/fixture/test_style_plain.txt', 'r').read()
 
     assert generate_diff(file1_json, file2_json) == expected_result
     assert generate_diff(file1_yaml, file2_yaml) == expected_result
     assert generate_diff(file1_tree_json, file2_tree_json) == expected_result_tree
     assert generate_diff(file1_tree_yaml, file2_tree_yaml) == expected_result_tree
+    assert generate_diff(file1_tree_json, file2_tree_json, 'plain') == expected_result_plain
