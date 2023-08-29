@@ -1,7 +1,6 @@
 import json
 import yaml
 import os
-from yaml.loader import BaseLoader
 
 
 def parser(path):
@@ -9,4 +8,4 @@ def parser(path):
         if '.json' in os.path.split(path)[1]:
             return json.load(file)
         elif '.yaml' or '.yml' in os.path.split(path)[1]:
-            return yaml.load(file, Loader=BaseLoader)
+            return yaml.safe_load(file)

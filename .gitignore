@@ -11,3 +11,11 @@ __pycache__
 
 
 poetry.lock
+
+.coverage
+
+
+coverage.xml
+
+
+.pytest_cache
