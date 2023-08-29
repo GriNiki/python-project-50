@@ -22,34 +22,37 @@ FILES = {
 }
 
 
+def open_file(path):
+    with open(path, 'r') as file:
+        return file.read()
+
+
 def test_flat_json_file():
-    with open(FILES['expected_result_json_flat'], 'r') as file:
-        expected = file.read()
-    assert generate_diff(FILES['file1_json'], FILES['file2_json']) == expected
+    assert (generate_diff(FILES['file1_json'], FILES['file2_json']) ==
+            open_file(FILES['expected_result_json_flat']))
 
 
 def test_flat_yaml_file():
-    with open(FILES['expected_result_yaml_flat'], 'r') as file:
-        expected = file.read()
-    assert generate_diff(FILES['file1_yaml'], FILES['file2_yaml']) == expected
+    assert (generate_diff(FILES['file1_yaml'], FILES['file2_yaml']) ==
+            open_file(FILES['expected_result_yaml_flat']))
 
 
 def test_stylish_format():
-    with open(FILES['expected_result_tree'], 'r') as file:
-        expected = file.read()
-    assert generate_diff(FILES['file1_tree_json'], FILES['file2_tree_json'], 'stylish') == expected
-    assert generate_diff(FILES['file1_tree_yaml'], FILES['file2_tree_yaml'], 'stylish') == expected
+    assert (generate_diff(FILES['file1_tree_json'], FILES['file2_tree_json'], 'stylish') ==
+            open_file(FILES['expected_result_tree']))
+    assert (generate_diff(FILES['file1_tree_yaml'], FILES['file2_tree_yaml'], 'stylish') ==
+            open_file(FILES['expected_result_tree']))
 
 
 def test_plain_format():
-    with open(FILES['expected_result_plain'], 'r') as file:
-        expected = file.read()
-    assert generate_diff(FILES['file1_tree_json'], FILES['file2_tree_json'], 'plain') == expected
-    assert generate_diff(FILES['file1_tree_yaml'], FILES['file2_tree_yaml'], 'plain') == expected
+    assert (generate_diff(FILES['file1_tree_json'], FILES['file2_tree_json'], 'plain') ==
+            open_file(FILES['expected_result_plain']))
+    assert (generate_diff(FILES['file1_tree_yaml'], FILES['file2_tree_yaml'], 'plain') ==
+            open_file(FILES['expected_result_plain']))
 
 
 def test_json_format():
-    with open(FILES['expected_result_json'], 'r') as file:
-        expected = file.read()
-    assert generate_diff(FILES['file1_tree_json'], FILES['file2_tree_json'], 'json') == expected
-    assert generate_diff(FILES['file1_tree_yaml'], FILES['file2_tree_yaml'], 'json') == expected
+    assert (generate_diff(FILES['file1_tree_json'], FILES['file2_tree_json'], 'json') ==
+            open_file(FILES['expected_result_json']))
+    assert (generate_diff(FILES['file1_tree_yaml'], FILES['file2_tree_yaml'], 'json') ==
+            open_file(FILES['expected_result_json']))
