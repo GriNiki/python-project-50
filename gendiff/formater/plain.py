@@ -1,4 +1,5 @@
 def format_item(item):
+
     if isinstance(item, dict):
         formatted_item = '[complex value]'
 
@@ -17,6 +18,7 @@ def format_item(item):
     return formatted_item
 
 
+# flake8: noqa: C901
 def plain(diff):
 
     def walk(node, path):

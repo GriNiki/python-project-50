@@ -1,11 +1,11 @@
 import json
 import yaml
-import os
 
 
-def parser(path):
-    with open(path, 'r') as file:
-        if '.json' in os.path.split(path)[1]:
-            return json.load(file)
-        elif '.yaml' or '.yml' in os.path.split(path)[1]:
-            return yaml.safe_load(file)
+def parser(file, extension):
+
+    if '.json' in extension:
+        return json.load(file)
+
+    elif '.yaml' or '.yml' in extension:
+        return yaml.safe_load(file)

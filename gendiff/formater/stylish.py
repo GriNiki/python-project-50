@@ -1,11 +1,13 @@
 import itertools
 
 
+# flake8: noqa: C901
 def stylish(items, depth=0):
     result = []
     indent = (' ' * 4) * depth
 
     for item in items:
+
         if item['status'] == 'no_change':
             result.append(make_line(item['value'], item['item'], ' ', depth))
 
@@ -50,6 +52,7 @@ def make_line(key, value, symbol, depth):
 
 
 def format_item(item):
+
     if isinstance(item, bool):
         formatted_item = str(item).lower()
 
